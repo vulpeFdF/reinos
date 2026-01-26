@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reinos das Sombras</title>
+
+  <!-- Fonts parecidas com o Base -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a class="brand" href="/">
+        <div class="brand-title">REINOS DAS SOMBRAS</div>
+        <div class="brand-sub">ADENTRE A ESCURIDÃO</div>
+      </a>
+
+      <nav class="nav">
+        <a href="/" class="nav-link">PÁGINA INICIAL</a>
+        <a href="#explorar" class="nav-link">COMECE A EXPLORAR</a>
+        <a href="#sobre" class="nav-link">SOBRE NÓS</a>
+        <a href="#contato" class="nav-link">CONTATO</a>
+      </nav>
+
+      <div class="actions">
+        <button class="icon-btn" id="openSearch" aria-label="Pesquisar">
+          <!-- lupa fina -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7.25"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button class="icon-btn menu-btn" id="openMenu" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="container header-lines">
+      <div class="line"></div>
+      <div class="line line-thin"></div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-top">
+        <div class="drawer-title">MENU</div>
+        <button class="icon-btn" id="closeMenu" aria-label="Fechar menu">✕</button>
+      </div>
+      <a class="drawer-link" href="/">PÁGINA INICIAL</a>
+      <a class="drawer-link" href="#explorar">COMECE A EXPLORAR</a>
+      <a class="drawer-link" href="#sobre">SOBRE NÓS</a>
+      <a class="drawer-link" href="#contato">CONTATO</a>
+    </div>
+    <button class="drawer-backdrop" id="drawerBackdrop" aria-label="Fechar"></button>
+  </div>
+
+  <!-- SEARCH MODAL -->
+  <div class="search" id="search" aria-hidden="true">
+    <div class="search-panel">
+      <div class="search-top">
+        <div class="search-title">PESQUISAR</div>
+        <button class="icon-btn" id="closeSearch" aria-label="Fechar">✕</button>
+      </div>
+      <input class="search-input" id="searchInput" placeholder="Buscar por título..." />
+      <div class="search-results" id="searchResults"></div>
+    </div>
+    <button class="search-backdrop" id="searchBackdrop" aria-label="Fechar"></button>
+  </div>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('images/hero.jpg')"></div>
+      <div class="hero-vignette"></div>
+
+      <div class="container hero-inner">
+        <div class="kicker">ONDE OS PESADELOS GANHAM FORMA</div>
+        <div class="kicker-line"></div>
+
+        <blockquote class="quote">
+          “Há lugares que a luz teme alcançar, e histórias que deveriam permanecer não contadas...”
+        </blockquote>
+
+        <div class="accent-line"></div>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="section" id="explorar">
+      <div class="container section-head">
+        <div class="dash"></div>
+        <h2 class="section-title">DESTAQUES</h2>
+      </div>
+
+      <div class="container grid" id="featuredGrid"></div>
+    </section>
+
+    <!-- RECENT -->
+    <section class="section">
+      <div class="container section-head">
+        <div class="dash"></div>
+        <h2 class="section-title">ÚLTIMAS PUBLICAÇÕES</h2>
+      </div>
+
+      <div class="container list" id="recentList"></div>
+    </section>
+
+    <!-- ABOUT / CONTACT (placeholders) -->
+    <section class="section" id="sobre">
+      <div class="container section-head">
+        <div class="dash"></div>
+        <h2 class="section-title">SOBRE NÓS</h2>
+      </div>
+      <div class="container prose">
+        <p>Substitua este texto pelo seu conteúdo real.</p>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container section-head">
+        <div class="dash"></div>
+        <h2 class="section-title">CONTATO</h2>
+      </div>
+      <div class="container prose">
+        <p>Substitua por formulário/links. (Eu posso montar um formulário grátis do Netlify.)</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (igual ao protótipo/Base) -->
+  <footer class="site-footer">
+    <div class="container footer-line"></div>
+    <div class="container footer-inner">
+      <div class="footer-nav">
+        <a href="#sobre">SOBRE NÓS</a>
+        <a href="#contato">CONTATO</a>
+      </div>
+      <div class="footer-copy" id="footerCopy">© 2026 REINOS DAS SOMBRAS</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
