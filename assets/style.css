@@ -528,3 +528,51 @@ body::after{
   .footer-inner{ flex-direction:column; text-align:center; }
   .footer-copy{ white-space:normal; }
 }
+/* ===== Post layout helpers ===== */
+.post-title {
+  text-align: center;
+  margin: 0.2em 0 0.8em 0;
+}
+
+.post-title.red {
+  color: #b30000;
+}
+
+/* Image blocks */
+.post-img {
+  margin: 14px 0;
+}
+
+.post-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Float variants (use when you want text wrapping) */
+.post-img.left {
+  float: left;
+  width: 180px;
+  margin: 0 18px 12px 0;
+}
+
+.post-img.right {
+  float: right;
+  width: 240px;
+  margin: 6px 0 12px 18px;
+}
+
+.post-img.right.large {
+  width: 260px;
+}
+
+.post-img.center {
+  max-width: 520px;
+  margin: 16px auto 0 auto;
+}
+
+/* Utility */
+.clear {
+  clear: both;
+}
