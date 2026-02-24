@@ -21,7 +21,14 @@ function getId() {
   const subtitle = document.getElementById("subtitle");
   const content = document.getElementById("content");
 
-  if (cover) cover.style.backgroundImage = `url('${post.cover_image || ""}')`;
+  if (cover) {
+  if (post.cover_image) {
+    cover.style.backgroundImage = `url('${post.cover_image}')`;
+    cover.style.display = "block";
+  } else {
+    cover.style.display = "none";
+  }
+}
   if (category) category.textContent = (post.category || "").toUpperCase();
   if (title) title.textContent = post.title || "";
   if (subtitle) subtitle.textContent = post.subtitle || "";
