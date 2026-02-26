@@ -7,55 +7,41 @@
 </head>
 <body>
 
-<header>
-  <h1>Contato</h1>
-</header>
-
 <main class="contact-container">
-<section class="contact-form">
-  <h1 class="contact-title">Contato</h1>
-  <p class="contact-subtitle">Envie sua mensagem. Eu leio tudo, mas posso demorar um pouco pra responder.</p>
+  <section class="contact-form">
+    <h1 class="contact-title">Contato</h1>
+    <p class="contact-subtitle">
+      Envie sua mensagem. Eu leio tudo, mas posso demorar um pouco pra responder.
+    </p>
 
-  <!-- aqui entra o form -->
-</section>
+    <form id="contactForm" class="contact-form-inner">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" name="nome" required>
+      </div>
 
-  <form name="contato"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      action="/obrigado.html"
-      class="contact-form">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
 
-  <input type="hidden" name="form-name" value="contato">
+      <div class="form-group">
+        <label>Assunto</label>
+        <input type="text" name="assunto" required>
+      </div>
 
-  <p hidden>
-    <label>Não preencha isso: <input name="bot-field"></label>
-  </p>
+      <div class="form-group">
+        <label>Mensagem</label>
+        <textarea name="mensagem" rows="6" required></textarea>
+      </div>
 
-  <div class="form-group">
-    <label>Nome</label>
-    <input type="text" name="nome" required>
-  </div>
+      <button type="submit" class="btn-primary">Enviar</button>
 
-  <div class="form-group">
-    <label>Email</label>
-    <input type="email" name="email" required>
-  </div>
-
-  <div class="form-group">
-    <label>Assunto</label>
-    <input type="text" name="assunto" required>
-  </div>
-
-  <div class="form-group">
-    <label>Mensagem</label>
-    <textarea name="mensagem" rows="6" required></textarea>
-  </div>
-
-  <button type="submit" class="btn-primary">Enviar</button>
-</form>
-
+      <p id="formStatus" class="form-status" aria-live="polite"></p>
+    </form>
+  </section>
 </main>
 
+<script src="assets/contact.js"></script>
 </body>
 </html>
