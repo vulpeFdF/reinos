@@ -459,11 +459,13 @@ body::after{
 .search.open{ display:block; }
 .search-backdrop{
   position:absolute; inset:0;
+    z-index: 0;
   background: rgba(0,0,0,.7);
   border:0;
 }
 .search-panel{
   position:absolute;
+    z-index: 1;
   left:50%; top: 12vh;
   transform: translateX(-50%);
   width:min(720px, 92vw);
