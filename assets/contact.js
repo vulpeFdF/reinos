@@ -1,29 +1,35 @@
-const form = document.getElementById("contactForm");
-const statusEl = document.getElementById("formStatus");
+(() => {
+  const form = document.getElementById("contactForm");
+  const statusEl = document.getElementById("formStatus");
 
-// 1) Coloque aqui o endpoint do Formspree (vou explicar abaixo)
-const FORMSPREE_URL = https://formspree.io/f/xgolddgq;
+  // coloque aqui seu endpoint do Formspree:
+  const FORMSPREE_URL = "https://formspree.io/f/xgolddgq";
 
-form?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  statusEl.textContent = "Enviando...";
+  if (!form) return;
 
-  const data = new FormData(form);
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  try {
-    const res = await fetch(FORMSPREE_URL, {
-      method: "POST",
-      body: data,
-      headers: { "Accept": "application/json" }
-    });
+    if (statusEl) statusEl.textContent = "Enviando...";
 
-    if (!res.ok) throw new Error("Falha no envio");
+    const data = new FormData(form);
 
-    form.reset();
-    statusEl.textContent = "Mensagem enviada com sucesso.";
-    // se quiser redirecionar:
-    // window.location.href = "/obrigado.html";
-  } catch (err) {
-    statusEl.textContent = "Erro ao enviar. Tente novamente mais tarde.";
-  }
-});
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (!res.ok) throw new Error("Falha no envio");
+
+      form.reset();
+      if (statusEl) statusEl.textContent = "Mensagem enviada com sucesso.";
+
+      // Se quiser redirecionar:
+      // window.location.href = "/obrigado.html";
+    } catch (err) {
+      if (statusEl) statusEl.textContent = "Erro ao enviar. Tente novamente mais tarde.";
+    }
+  });
+})();
