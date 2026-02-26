@@ -578,3 +578,58 @@ body::after{
 .clear {
   clear: both;
 }
+
+.contact-container{
+  display:flex;
+  justify-content:center;
+  padding:60px 20px;
+}
+
+.contact-form{
+  width:100%;
+  max-width:500px;
+  background:#0b0b0b;
+  padding:30px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 0 20px rgba(0,0,0,.6);
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  margin-bottom:18px;
+}
+
+.form-group label{
+  margin-bottom:6px;
+  font-size:14px;
+  color:#aaa;
+}
+
+.form-group input,
+.form-group textarea{
+  background:#050505;
+  border:1px solid rgba(255,255,255,.1);
+  padding:10px;
+  color:white;
+  font-family:inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+  outline:none;
+  border-color:#990000;
+}
+
+.btn-primary{
+  background:#990000;
+  border:none;
+  padding:12px;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn-primary:hover{
+  background:#cc0000;
+}

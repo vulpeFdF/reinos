@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contato | Reinos das Sombras</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Contato</h1>
+</header>
+
+<main class="contact-container">
+
+  <form name="contato"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="contact-form">
+
+    <!-- necessário pro Netlify -->
+    <input type="hidden" name="form-name" value="contato">
+
+    <!-- campo anti-bot invisível -->
+    <p hidden>
+      <label>Não preencha isso: <input name="bot-field"></label>
+    </p>
+
+    <div class="form-group">
+      <label>Nome</label>
+      <input type="text" name="nome" required>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label>Assunto</label>
+      <input type="text" name="assunto" required>
+    </div>
+
+    <div class="form-group">
+      <label>Mensagem</label>
+      <textarea name="mensagem" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="btn-primary">Enviar</button>
+
+  action="/obrigado.html"
+
+<h2>Mensagem enviada com sucesso.</h2>
+<a href="index.html">Voltar</a>
+
+  </form>
+
+</main>
+
+</body>
+</html>
