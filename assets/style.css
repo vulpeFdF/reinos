@@ -713,45 +713,17 @@ body::after{
 .thankyou-box{
   text-align:center;
 }
-/* ===== Layout "cinematográfico" ===== */
-:root{
-  --bg: #050505;
-  --panel: rgba(10,10,10,.85);
-  --line: rgba(255,255,255,.08);
-  --text: rgba(255,255,255,.82);
-  --muted: rgba(255,255,255,.55);
-  --accent: #9a0000;
-}
 
-/* Fundo com vinheta */
-body{
-  background: radial-gradient(ellipse at center, rgba(35,35,35,.25) 0%, rgba(0,0,0,1) 60%);
-  color: var(--text);
-}
-
-/* Moldura/“site dentro de um quadro” */
+/* ===== Ajustes de “moldura”/layout (Cloudflare friendly) ===== */
 .site-shell{
   max-width: 1180px;
   margin: 22px auto;
   border: 1px solid var(--line);
-  background: rgba(0,0,0,.65);
+  background: rgba(0,0,0,.55);
   box-shadow: 0 0 55px rgba(0,0,0,.65);
 }
 
-/* Containers padrão */
-.container{
-  width: min(1080px, 92vw);
-  margin: 0 auto;
-}
-
-/* Linhas finas */
-.hr-line{
-  height: 1px;
-  background: var(--line);
-  margin: 26px 0;
-}
-
-/* Títulos com letras espaçadas */
+/* Kicker/linha de seção (para “Últimas publicações”) */
 .section-kicker{
   display:flex;
   align-items:center;
@@ -761,125 +733,65 @@ body{
   font-size: 12px;
   color: var(--muted);
 }
-
 .section-kicker::before{
   content:"";
   width: 44px;
   height: 1px;
   background: var(--accent);
-  opacity: .9;
+  opacity: .95;
+}
+.hr-line{
+  height:1px;
+  background: rgba(255,255,255,.06);
+  margin: 22px 0;
 }
 
-/* ===== Header / Nav (cara do print) ===== */
-.site-header{
-  padding: 22px 0 10px;
-}
-
-.brand{
-  letter-spacing: .42em;
-  font-size: 26px;
-  color: rgba(255,255,255,.92);
-}
-
-.brand-sub{
-  margin-top: 6px;
-  letter-spacing: .28em;
-  font-size: 11px;
-  color: rgba(255,255,255,.45);
-}
-
-.nav{
-  display:flex;
-  gap: 34px;
-  justify-content:flex-end;
-  align-items:center;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-.nav a{
-  color: rgba(255,255,255,.65);
-  text-decoration:none;
-}
-
-.nav a:hover{
-  color: rgba(255,255,255,.92);
-}
-
-.nav a.active{
-  color: rgba(255,255,255,.92);
-}
-
-/* ===== “Hero quote” do print 2 ===== */
-.hero-quote{
-  padding: 86px 0;
-  text-align:center;
-  color: rgba(255,255,255,.55);
-  font-style: italic;
-  font-size: clamp(18px, 2.2vw, 28px);
-}
-
-.hero-quote .dash{
-  width: 70px;
-  height: 1px;
-  background: var(--accent);
-  margin: 18px auto 0;
-  opacity: .8;
-}
-
-/* ===== Lista de posts estilo print 1 ===== */
-.post-row{
+/* ===== Feed estilo “imagem + texto” (sem conflito com .post-title do artigo) ===== */
+.feed-row{
   display:grid;
   grid-template-columns: 380px 1fr;
   gap: 34px;
   align-items:center;
   padding: 26px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  text-decoration:none;
+  color:inherit;
 }
-
-.post-cover{
+.feed-cover{
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border: 1px solid var(--line);
   opacity: .95;
 }
-
-.post-meta{
+.feed-meta{
   letter-spacing: .28em;
   text-transform: uppercase;
   font-size: 11px;
   color: var(--accent);
+  margin-bottom: 10px;
 }
-
-.post-title{
-  margin: 10px 0 10px;
-  letter-spacing: .08em;
+.feed-title{
+  margin: 0 0 10px;
+  font-family:"Cinzel", serif;
+  letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(255,255,255,.92);
   font-size: clamp(18px, 2vw, 28px);
 }
-
-.post-sub{
+.feed-sub{
   color: rgba(255,255,255,.55);
   font-style: italic;
-  margin-bottom: 14px;
+  margin: 0 0 14px;
 }
-
-.post-excerpt{
+.feed-excerpt{
   color: rgba(255,255,255,.62);
   line-height: 1.65;
   max-width: 70ch;
 }
 
-.post-row a{
-  text-decoration: none;
-}
-
 /* Responsivo */
 @media (max-width: 860px){
-  .post-row{
-    grid-template-columns: 1fr;
-  }
-  .nav{ gap: 16px; justify-content:center; flex-wrap:wrap; }
+  .site-shell{ margin: 0; border-left:0; border-right:0; }
+  .feed-row{ grid-template-columns: 1fr; }
 }

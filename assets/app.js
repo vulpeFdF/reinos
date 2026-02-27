@@ -18,16 +18,20 @@ function cardHTML(post) {
 }
 
 function rowHTML(post) {
+  const cover = post.cover_image || "";
   return `
-    <a class="row" href="story.html?id=${encodeURIComponent(post.id)}">
-      <div class="row-left">
-        <div class="row-title">${post.title}</div>
-        <div class="row-excerpt">${post.excerpt || ""}</div>
+    <a class="feed-row" href="story.html?id=${encodeURIComponent(post.id)}">
+      ${cover ? `<img class="feed-cover" src="${cover}" alt="${post.title || ""}">` : `<div></div>`}
+      <div>
+        <div class="feed-meta">${post.category || ""}</div>
+        <div class="feed-title">${post.title || ""}</div>
+        ${post.subtitle ? `<div class="feed-sub">${post.subtitle}</div>` : ""}
+        <div class="feed-excerpt">${post.excerpt || ""}</div>
       </div>
-      <div class="row-right">→</div>
     </a>
   `;
 }
+
 
 function setupMenu() {
   const drawer = document.getElementById("drawer");

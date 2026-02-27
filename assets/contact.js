@@ -2,13 +2,19 @@
   const form = document.getElementById("contactForm");
   const statusEl = document.getElementById("formStatus");
 
-  // coloque aqui seu endpoint do Formspree:
-  const FORMSPREE_URL = "https://formspree.io/f/xgolddgq";
+  // Cloudflare Pages: use um endpoint externo (ex.: Formspree).
+  // Troque a URL abaixo pela sua (ex.: https://formspree.io/f/abcdwxyz)
+  const FORMSPREE_URL = "https://formspree.io/f/SEU_ID_AQUI";
 
   if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    if (FORMSPREE_URL.includes("SEU_ID_AQUI")) {
+      if (statusEl) statusEl.textContent = "Configuração pendente: adicione sua URL do Formspree em assets/contact.js.";
+      return;
+    }
 
     if (statusEl) statusEl.textContent = "Enviando...";
 
