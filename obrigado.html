@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Mensagem enviada | Reinos das Sombras</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mensagem enviada • Reinos das Sombras</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/cookies.css" />
 </head>
 <body>
+  <div class="site-shell">
 
-<div class="site-shell">
-
-<header class="site-header compact">
+  <!-- TOP BAR -->
+  <header class="site-header">
     <div class="container header-inner">
+
       <a class="brand" href="/">
         <div class="brand-title">REINOS DAS SOMBRAS</div>
         <div class="brand-sub">ADENTRE A ESCURIDÃO</div>
@@ -19,28 +26,98 @@
       <nav class="nav">
         <a href="/" class="nav-link">PÁGINA INICIAL</a>
         <a href="/#explorar" class="nav-link">COMECE A EXPLORAR</a>
-        <a href="/#sobre" class="nav-link">SOBRE NÓS</a>
-        <a href="contato.html" class="nav-link">CONTATO</a>
+        <a href="/sobre.html" class="nav-link">SOBRE NÓS</a>
+        <a href="/contato.html" class="nav-link">CONTATO</a>
       </nav>
 
       <div class="actions">
-        <a class="icon-btn" href="/" aria-label="Voltar">←</a>
+        <button class="icon-btn" id="openSearch" aria-label="Pesquisar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7.25"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button class="icon-btn menu-btn" id="openMenu" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+
+    </div>
+
+    <div class="container">
+      <div class="line"></div>
+      <div class="line line-thin"></div>
     </div>
   </header>
 
+  <!-- MOBILE MENU -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-top">
+        <div class="drawer-title">MENU</div>
+        <button class="icon-btn" id="closeMenu" aria-label="Fechar menu">✕</button>
+      </div>
+      <a class="drawer-link" href="/">PÁGINA INICIAL</a>
+      <a class="drawer-link" href="/#explorar">COMECE A EXPLORAR</a>
+      <a class="drawer-link" href="/sobre.html">SOBRE NÓS</a>
+      <a class="drawer-link" href="/contato.html">CONTATO</a>
+      <a class="drawer-link" href="/Politica-de-privacidade.html">PRIVACIDADE</a>
+    </div>
+    <button class="drawer-backdrop" id="drawerBackdrop" aria-label="Fechar"></button>
+  </div>
+
+  <!-- SEARCH MODAL -->
+  <div class="search" id="search" aria-hidden="true">
+    <div class="search-panel">
+      <div class="search-top">
+        <div class="search-title">PESQUISAR</div>
+        <button class="icon-btn" id="closeSearch" aria-label="Fechar">✕</button>
+      </div>
+      <input class="search-input" id="searchInput" placeholder="Buscar por título..." />
+      <div class="search-results" id="searchResults"></div>
+    </div>
+    <button class="search-backdrop" id="searchBackdrop" aria-label="Fechar"></button>
+  </div>
 
 
-<main class="contact-container">
-  <section class="contact-form thankyou-box">
-    <h1 class="contact-title">Mensagem enviada</h1>
-    <p class="contact-subtitle">Recebido. Se for algo urgente, você também pode chamar pelas redes.</p>
+  <main>
+    <section class="hero" style="min-height:40vh;">
+      <div class="hero-bg" style="background-image:url('images/hero.jpg')"></div>
+      <div class="hero-vignette"></div>
 
-    <a class="btn-primary" href="index.html">Voltar para a Home</a>
-  </section>
-</main>
+      <div class="container hero-inner">
+        <div class="kicker">OBRIGADO</div>
+        <div class="kicker-line"></div>
 
+        <blockquote class="quote">
+          Mensagem enviada com sucesso. Se as sombras permitirem, eu respondo em breve.
+        </blockquote>
 
-</div>
+        <div class="accent-line"></div>
+
+        <p style="margin-top:26px;">
+          <a class="nav-link" href="/">Voltar para a página inicial</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-line"></div>
+    <div class="container footer-inner">
+      <div class="footer-nav">
+        <a href="/sobre.html">SOBRE NÓS</a>
+        <a href="/contato.html">CONTATO</a>
+        <a href="/Politica-de-privacidade.html">PRIVACIDADE</a>
+      </div>
+      <div class="footer-copy" id="footerCopy">© 2026 REINOS DAS SOMBRAS</div>
+    </div>
+  </footer>
+
+  <script src="assets/cookies.js"></script>
+  <script src="assets/app.js"></script>
+
+  </div>
 </body>
 </html>
