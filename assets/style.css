@@ -795,3 +795,25 @@ body::after{
   .site-shell{ margin: 0; border-left:0; border-right:0; }
   .feed-row{ grid-template-columns: 1fr; }
 }
+.about-list{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: rgba(255,255,255,.62);
+  line-height: 1.8;
+  max-width: 78ch;
+}
+
+.about-list li{
+  margin: 6px 0;
+}
+
+.about-link{
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(154,0,0,.6);
+}
+
+.about-link:hover{
+  color: rgba(255,255,255,.95);
+  border-bottom-color: rgba(154,0,0,1);
+}

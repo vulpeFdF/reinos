@@ -4,7 +4,7 @@
 
   // Cloudflare Pages: use um endpoint externo (ex.: Formspree).
   // Troque a URL abaixo pela sua (ex.: https://formspree.io/f/abcdwxyz)
-  const FORMSPREE_URL = "https://formspree.io/f/SEU_ID_AQUI";
+  const FORMSPREE_URL = "https://formspree.io/f/xgolddgq";
 
   if (!form) return;
 

@@ -88,7 +88,14 @@ function setupSearch(posts) {
 
   featuredGrid.innerHTML = (featured.length ? featured : posts.slice(0, 3)).map(cardHTML).join("");
   recentList.innerHTML = (recent.length ? recent : posts).slice(0, 6).map(rowHTML).join("");
+const sorted = [...posts].sort((a, b) => {
+  const da = new Date(a.date || a.created_at || 0).getTime();
+  const db = new Date(b.date || b.created_at || 0).getTime();
+  return db - da; // mais novo primeiro
+});
 
+// use sorted no lugar de posts
+const latest = sorted.slice(0, 10);
   // copyright automático
   const y = new Date().getFullYear();
   const footer = document.getElementById("footerCopy");
