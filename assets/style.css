@@ -839,3 +839,26 @@ body::after{
   color: rgba(255,255,255,.95);
   border-bottom-color: rgba(154,0,0,1);
 }
+/* ===== FULL WIDTH (igual protótipo) ===== */
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000; /* garante sem “bordas” claras */
+}
+
+.site-shell{
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* se algum container estiver limitando demais */
+.container{
+  width: min(1200px, 92vw);
+}
