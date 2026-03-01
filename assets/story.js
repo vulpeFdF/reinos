@@ -1,3 +1,22 @@
+// ===============================
+// VIEW COUNTER (localStorage)
+// ===============================
+const VIEWS_KEY = "views_map";
+
+function getViewsMap() {
+  try {
+    return JSON.parse(localStorage.getItem(VIEWS_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function trackView(postId) {
+  if (!postId) return;
+  const map = getViewsMap();
+  map[postId] = (map[postId] || 0) + 1;
+  localStorage.setItem(VIEWS_KEY, JSON.stringify(map));
+}
 async function loadPosts() {
   const res = await fetch("data/posts.json", { cache: "no-store" });
   return res.json();
@@ -12,6 +31,7 @@ function getId() {
   const id = getId();
   const posts = await loadPosts();
   const post = posts.find(p => p.id === id) || posts[0];
+  trackView(post.id);
 
   document.title = `${post?.title || "Artigo"} • Reinos das Sombras`;
 
