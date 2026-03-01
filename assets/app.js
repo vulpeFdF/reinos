@@ -119,3 +119,51 @@ function setupSearch(posts) {
   // busca funciona em qualquer página que tenha o modal
   setupSearch(sorted);
 })();
+
+async function goRandomPost() {
+  try {
+    const res = await fetch("/data/posts.json", { cache: "no-store" });
+    const posts = await res.json();
+
+    if (!Array.isArray(posts) || posts.length === 0) return;
+
+    const keyOf = (p) => p.id ?? p.slug ?? null;
+
+    // Se só tem 1 post, não tem como evitar repetição
+    if (posts.length === 1) {
+      const only = posts[0];
+      const k = keyOf(only);
+      if (k) localStorage.setItem("last_random_post", String(k));
+      if (only.id) return (window.location.href = `story.html?id=${encodeURIComponent(only.id)}`);
+      if (only.slug) return (window.location.href = `story.html?slug=${encodeURIComponent(only.slug)}`);
+      return;
+    }
+
+    const last = localStorage.getItem("last_random_post");
+
+    // tenta evitar repetir o último
+    let chosen = null;
+    for (let i = 0; i < 10; i++) {
+      const candidate = posts[Math.floor(Math.random() * posts.length)];
+      const ck = keyOf(candidate);
+      if (ck && ck !== last) {
+        chosen = candidate;
+        break;
+      }
+    }
+
+    // fallback (caso tenha dado azar 10x)
+    if (!chosen) chosen = posts[Math.floor(Math.random() * posts.length)];
+
+    const chosenKey = keyOf(chosen);
+    if (chosenKey) localStorage.setItem("last_random_post", String(chosenKey));
+
+    if (chosen.id) {
+      window.location.href = `story.html?id=${encodeURIComponent(chosen.id)}`;
+    } else if (chosen.slug) {
+      window.location.href = `story.html?slug=${encodeURIComponent(chosen.slug)}`;
+    }
+  } catch (err) {
+    console.error("Erro ao selecionar post aleatório:", err);
+  }
+}
