@@ -6,9 +6,9 @@
      crossorigin="anonymous"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Reinos das Sombras</title>
+  <title>Reinos das Sombras • Mistérios, Lendas e o Inexplicável</title>
 
-  <!-- Consent Mode v2 (antes de carregar GA/Ads) -->
+  <!-- Consent Mode v2 -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -21,17 +21,11 @@
     });
   </script>
 
-  <!-- Google Analytics (troquei SEU_GA_ID pelo seu ID real) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XC2ZVDQF6"></script>
   <script>
     gtag('js', new Date());
     gtag('config', 'G-2XC2ZVDQF6');
-  </script>
-
-  <!-- AdSense (TEM que ser ca-pub-...) -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1007208030081142"
-    crossorigin="anonymous">
   </script>
 
   <!-- Fonts -->
@@ -43,195 +37,130 @@
 </head>
 
 <body>
-  <div id="cookie-banner" style="
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#111;
-    color:#fff;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:9999;
-    font-family: serif;
-  ">
-    <span>Este site utiliza cookies para melhorar sua experiência.</span>
+  <div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:#fff;padding:20px;display:flex;justify-content:space-between;align-items:center;z-index:9999;font-family: serif;">
+    <span>Este site utiliza cookies para melhorar sua experiência e oferecer anúncios relevantes.</span>
     <div>
-      <button type="button" onclick="acceptCookies()" style="background:#8b0000;color:#fff;border:none;padding:10px 20px;margin-right:10px;cursor:pointer;">
-        Aceitar
-      </button>
-      <button type="button" onclick="declineCookies()" style="background:#333;color:#fff;border:1px solid #555;padding:10px 20px;cursor:pointer;">
-        Recusar
-      </button>
+      <button type="button" onclick="acceptCookies()" style="background:#8b0000;color:#fff;border:none;padding:10px 20px;margin-right:10px;cursor:pointer;">Aceitar</button>
+      <button type="button" onclick="declineCookies()" style="background:#333;color:#fff;border:1px solid #555;padding:10px 20px;cursor:pointer;">Recusar</button>
     </div>
   </div>
 
   <script>
     function acceptCookies(){
-      gtag('consent', 'update', {
-        'ad_storage': 'granted',
-        'analytics_storage': 'granted',
-        'ad_user_data': 'granted',
-        'ad_personalization': 'granted'
-      });
+      gtag('consent', 'update', {'ad_storage': 'granted','analytics_storage': 'granted','ad_user_data': 'granted','ad_personalization': 'granted'});
       localStorage.setItem("cookie_consent", "accepted");
       document.getElementById("cookie-banner").style.display = "none";
     }
-
     function declineCookies(){
       localStorage.setItem("cookie_consent", "denied");
       document.getElementById("cookie-banner").style.display = "none";
     }
-
     window.addEventListener("load", function(){
       const consent = localStorage.getItem("cookie_consent");
-
-      if(consent === "accepted"){
-        gtag('consent', 'update', {
-          'ad_storage': 'granted',
-          'analytics_storage': 'granted',
-          'ad_user_data': 'granted',
-          'ad_personalization': 'granted'
-        });
-        document.getElementById("cookie-banner").style.display = "none";
-      }
-
-      if(consent === "denied"){
-        document.getElementById("cookie-banner").style.display = "none";
-      }
+      if(consent === "accepted" || consent === "denied") document.getElementById("cookie-banner").style.display = "none";
     });
   </script>
 
-  <!-- resto do seu site aqui -->
-
   <div class="site-shell">
-
-  <!-- TOP BAR -->
-  <header class="site-header">
-    <div class="container header-inner">
-
-      <a class="brand" href="/">
-        <div class="brand-title">REINOS DAS SOMBRAS</div>
-        <div class="brand-sub">ADENTRE A ESCURIDÃO</div>
-      </a>
-
-      <nav class="nav">
-      <a href="/" class="nav-link">PÁGINA INICIAL</a>
-
-<a href="#" class="nav-link" onclick="goRandomPost(); return false;">
-  REVELAR UM SEGREDO
-</a>
-
-<a href="sobre.html" class="nav-link">SOBRE NÓS</a>
-<a href="contato.html" class="nav-link">CONTATO</a>
-      </nav>
-
-      <div class="actions">
-        <button class="icon-btn" id="openSearch" aria-label="Pesquisar">
-          <!-- lupa fina -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="7.25"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-
-        <button class="icon-btn menu-btn" id="openMenu" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/">
+          <div class="brand-title">REINOS DAS SOMBRAS</div>
+          <div class="brand-sub">ADENTRE A ESCURIDÃO</div>
+        </a>
+        <nav class="nav">
+          <a href="/" class="nav-link">PÁGINA INICIAL</a>
+          <a href="/sobre.html" class="nav-link">QUEM SOMOS</a>
+          <a href="/contato.html" class="nav-link">CONTATO</a>
+          <a href="/Politica-de-privacidade.html" class="nav-link">PRIVACIDADE</a>
+        </nav>
+        <div class="actions">
+          <button class="icon-btn" id="openSearch" aria-label="Pesquisar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7.25"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <button class="icon-btn menu-btn" id="openMenu" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
-
-    </div>
-
-    <div class="container header-lines">
-      <div class="line"></div>
-      <div class="line line-thin"></div>
-    </div>
-  </header>
-
-  <!-- MOBILE MENU -->
-  <div class="drawer" id="drawer" aria-hidden="true">
-    <div class="drawer-panel">
-      <div class="drawer-top">
-        <div class="drawer-title">MENU</div>
-        <button class="icon-btn" id="closeMenu" aria-label="Fechar menu">✕</button>
+      <div class="container header-lines">
+        <div class="line"></div>
+        <div class="line line-thin"></div>
       </div>
-      <a class="drawer-link" href="/">PÁGINA INICIAL</a>
-      <a href="#" class="nav-link" onclick="goRandomPost(); return false;"></a>REVELAR UM SEGREDO</a>
-      <a class="drawer-link" href="sobre.html">SOBRE NÓS</a>
-      <a class="drawer-link" href="contato.html">CONTATO</a>
+    </header>
+
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer-panel">
+        <div class="drawer-top">
+          <div class="drawer-title">MENU</div>
+          <button class="icon-btn" id="closeMenu" aria-label="Fechar menu">✕</button>
+        </div>
+        <a class="drawer-link" href="/">PÁGINA INICIAL</a>
+        <a class="drawer-link" href="/sobre.html">QUEM SOMOS</a>
+        <a class="drawer-link" href="/contato.html">CONTATO</a>
+        <a class="drawer-link" href="/Politica-de-privacidade.html">PRIVACIDADE</a>
+      </div>
+      <button class="drawer-backdrop" id="drawerBackdrop" aria-label="Fechar"></button>
     </div>
-    <button class="drawer-backdrop" id="drawerBackdrop" aria-label="Fechar"></button>
+
+    <div class="search" id="search" aria-hidden="true">
+      <div class="search-panel">
+        <div class="search-top">
+          <div class="search-title">PESQUISAR</div>
+          <button class="icon-btn" id="closeSearch" aria-label="Fechar">✕</button>
+        </div>
+        <input class="search-input" id="searchInput" placeholder="Buscar por título..." />
+        <div class="search-results" id="searchResults"></div>
+      </div>
+      <button class="search-backdrop" id="searchBackdrop" aria-label="Fechar"></button>
+    </div>
+
+    <main>
+      <section class="hero">
+        <div class="hero-bg" style="background-image:url('/images/hero.jpg')"></div>
+        <div class="hero-vignette"></div>
+        <div class="container hero-inner">
+          <div class="kicker">ONDE OS PESADELOS GANHAM FORMA</div>
+          <div class="kicker-line"></div>
+          <blockquote class="quote">
+            “Há lugares que a luz teme alcançar, e histórias que deveriam permanecer não contadas...”
+          </blockquote>
+          <div class="accent-line"></div>
+        </div>
+      </section>
+
+      <section class="section" id="explorar">
+        <div class="container section-head">
+          <div class="dash"></div>
+          <h2 class="section-title">DESTAQUES</h2>
+        </div>
+        <div class="container grid" id="featuredGrid"></div>
+      </section>
+
+      <section class="section">
+        <div class="container section-head">
+          <div class="dash"></div>
+          <h2 class="section-title">ÚLTIMAS PUBLICAÇÕES</h2>
+        </div>
+        <div class="container list" id="recentList"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-line"></div>
+      <div class="container footer-inner">
+        <div class="footer-nav">
+          <a href="/sobre.html">SOBRE NÓS</a>
+          <a href="/contato.html">CONTATO</a>
+          <a href="/Politica-de-privacidade.html">PRIVACIDADE</a>
+        </div>
+        <div class="footer-copy" id="footerCopy">© 2026 REINOS DAS SOMBRAS</div>
+      </div>
+    </footer>
   </div>
-
-  <!-- SEARCH MODAL -->
-  <div class="search" id="search" aria-hidden="true">
-    <div class="search-panel">
-      <div class="search-top">
-        <div class="search-title">PESQUISAR</div>
-        <button class="icon-btn" id="closeSearch" aria-label="Fechar">✕</button>
-      </div>
-      <input class="search-input" id="searchInput" placeholder="Buscar por título..." />
-      <div class="search-results" id="searchResults"></div>
-    </div>
-    <button class="search-backdrop" id="searchBackdrop" aria-label="Fechar"></button>
-  </div>
-
-  <!-- HERO -->
-  <main>
-    <section class="hero">
-      <div class="hero-bg" style="background-image:url('images/hero.jpg')"></div>
-      <div class="hero-vignette"></div>
-
-      <div class="container hero-inner">
-        <div class="kicker">ONDE OS PESADELOS GANHAM FORMA</div>
-        <div class="kicker-line"></div>
-
-        <blockquote class="quote">
-          “Há lugares que a luz teme alcançar, e histórias que deveriam permanecer não contadas...”
-        </blockquote>
-
-        <div class="accent-line"></div>
-      </div>
-    </section>
-
-    <!-- FEATURED -->
-    <section class="section" id="explorar">
-      <div class="container section-head">
-        <div class="dash"></div>
-        <h2 class="section-title">DESTAQUES</h2>
-      </div>
-
-      <div class="container grid" id="featuredGrid"></div>
-    </section>
-
-
-    <!-- RECENT -->
-    <section class="section">
-      <div class="container section-head">
-        <div class="dash"></div>
-        <h2 class="section-title">ÚLTIMAS PUBLICAÇÕES</h2>
-      </div>
-
-      <div class="container list" id="recentList"></div>
-    </section>
-  </main>
-
-  <!-- FOOTER (igual ao protótipo/Base) -->
-  <footer class="site-footer">
-    <div class="container footer-line"></div>
-    <div class="container footer-inner">
-      <div class="footer-nav">
-        <a href="/sobre.html">SOBRE NÓS</a>
-        <a href="/contato.html">CONTATO</a>
-        <a href="/Politica-de-privacidade.html">PRIVACIDADE</a>
-      </div>
-      <div class="footer-copy" id="footerCopy">© 2026 REINOS DAS SOMBRAS</div>
-    </div>
-  </footer>
-
-  <script src="assets/app.js"></script>
-  <!-- teste git -->
+  <script src="/assets/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://reinosdassombras.com.br/sitemap.xml
