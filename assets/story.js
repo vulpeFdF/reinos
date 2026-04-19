@@ -35,6 +35,20 @@ function getId() {
 
   document.title = `${post?.title || "Artigo"} • Reinos das Sombras`;
 
+  // Dynamic meta tags for SEO
+  const metaDesc = document.getElementById('metaDesc');
+  const ogTitle = document.getElementById('ogTitle');
+  const ogDesc = document.getElementById('ogDesc');
+  const excerpt = post?.excerpt || post?.subtitle || (post?.content_html || '').replace(/<[^>]+>/g, '').slice(0, 160);
+  if (metaDesc) metaDesc.setAttribute('content', excerpt);
+  if (ogTitle) ogTitle.setAttribute('content', `${post?.title || 'Artigo'} • Reinos das Sombras`);
+  if (ogDesc) ogDesc.setAttribute('content', excerpt);
+
+  // Update footer copyright
+  const y = new Date().getFullYear();
+  const footer = document.getElementById('footerCopy');
+  if (footer) footer.textContent = `© ${y} REINOS DAS SOMBRAS`;
+
   const cover = document.getElementById("cover");
   const category = document.getElementById("category");
   const title = document.getElementById("title");
