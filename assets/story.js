@@ -44,6 +44,36 @@ function getId() {
   if (ogTitle) ogTitle.setAttribute('content', `${post?.title || 'Artigo'} • Reinos das Sombras`);
   if (ogDesc) ogDesc.setAttribute('content', excerpt);
 
+  // Update canonical tag
+  const canonical = document.getElementById('canonicalTag');
+  if (canonical) canonical.setAttribute('href', `https://reinosdasombras.com.br/story.html?id=${encodeURIComponent(post.id)}`);
+
+  // Fill breadcrumb
+  const bcCat = document.getElementById('breadcrumbCategory');
+  const bcTitle = document.getElementById('breadcrumbTitle');
+  if (bcCat) bcCat.textContent = post.category || 'Artigos';
+  if (bcTitle) bcTitle.textContent = post.title || '';
+
+  // Inject JSON-LD schema for article (SEO)
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title || '',
+    "description": excerpt,
+    "author": {"@type": "Person", "name": "Corvis"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "Reinos das Sombras",
+      "url": "https://reinosdasombras.com.br"
+    },
+    "datePublished": post.date || '',
+    "url": `https://reinosdasombras.com.br/story.html?id=${encodeURIComponent(post.id)}`
+  };
+  const schemaScript = document.createElement('script');
+  schemaScript.type = 'application/ld+json';
+  schemaScript.textContent = JSON.stringify(schema);
+  document.head.appendChild(schemaScript);
+
   // Update footer copyright
   const y = new Date().getFullYear();
   const footer = document.getElementById('footerCopy');

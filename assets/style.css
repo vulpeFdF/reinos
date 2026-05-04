@@ -862,3 +862,21 @@ html, body{
 .container{
   width: min(1200px, 92vw);
 }
+/* ── Breadcrumb ─────────────────────────────────────────── */
+.breadcrumb {
+  background: transparent;
+  padding: 10px 0 0;
+}
+.breadcrumb .container {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--c-muted, #888);
+  text-transform: uppercase;
+}
+.breadcrumb a {
+  color: var(--c-muted, #888);
+  text-decoration: none;
+}
+.breadcrumb a:hover { color: var(--c-accent, #8b0000); }
+.breadcrumb span { color: var(--c-muted, #888); }

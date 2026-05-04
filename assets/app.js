@@ -11,7 +11,7 @@ function cardHTML(post) {
         <div class="card-kicker">${post.category || ""}</div>
         <div class="card-title">${post.title || ""}</div>
         <div class="card-excerpt">${post.excerpt || ""}</div>
-        <div class="card-more">READ MORE →</div>
+        <div class="card-more">LER MAIS →</div>
       </div>
     </a>
   `;
