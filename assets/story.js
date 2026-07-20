@@ -46,7 +46,7 @@ function getId() {
 
   // Update canonical tag
   const canonical = document.getElementById('canonicalTag');
-  if (canonical) canonical.setAttribute('href', `https://reinosdasombras.com.br/story.html?id=${encodeURIComponent(post.id)}`);
+  if (canonical) canonical.setAttribute('href', `https://reinosdassombras.com.br/story.html?id=${encodeURIComponent(post.id)}`);
 
   // Fill breadcrumb
   const bcCat = document.getElementById('breadcrumbCategory');
@@ -64,10 +64,10 @@ function getId() {
     "publisher": {
       "@type": "Organization",
       "name": "Reinos das Sombras",
-      "url": "https://reinosdasombras.com.br"
+      "url": "https://reinosdassombras.com.br"
     },
     "datePublished": post.date || '',
-    "url": `https://reinosdasombras.com.br/story.html?id=${encodeURIComponent(post.id)}`
+    "url": `https://reinosdassombras.com.br/story.html?id=${encodeURIComponent(post.id)}`
   };
   const schemaScript = document.createElement('script');
   schemaScript.type = 'application/ld+json';
