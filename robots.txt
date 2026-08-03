@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /obrigado.html
 
 Sitemap: https://reinosdassombras.com.br/sitemap.xml

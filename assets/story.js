@@ -18,7 +18,7 @@ function trackView(postId) {
   localStorage.setItem(VIEWS_KEY, JSON.stringify(map));
 }
 async function loadPosts() {
-  const res = await fetch("data/posts.json", { cache: "no-store" });
+  const res = await fetch("/data/posts.json", { cache: "no-store" });
   return res.json();
 }
 
@@ -59,6 +59,7 @@ function getId() {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title || '',
+    "mainEntityOfPage": { "@type": "WebPage", "@id": `https://reinosdassombras.com.br/story.html?id=${encodeURIComponent(post.id)}` },
     "description": excerpt,
     "author": {"@type": "Person", "name": "Corvis"},
     "publisher": {
@@ -67,6 +68,8 @@ function getId() {
       "url": "https://reinosdassombras.com.br"
     },
     "datePublished": post.date || '',
+    "dateModified": post.date || '',
+    "inLanguage": "pt-BR",
     "url": `https://reinosdassombras.com.br/story.html?id=${encodeURIComponent(post.id)}`
   };
   const schemaScript = document.createElement('script');
