@@ -59,7 +59,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/assets/style.css" />
-  <link rel="stylesheet" href="/assets/ads.css" />
+  <style>
+    /* ===== Anúncios ===== */
+    .ad-label { display:block; text-align:center; font:10px/1 "Cinzel",serif; letter-spacing:.2em; opacity:.35; margin-bottom:6px; }
+    /* Banner 468x60 antes do rodapé */
+    .ad-slot-bottom { display:flex; justify-content:center; margin:48px auto 32px; padding:0 16px; overflow:hidden; }
+    @media (max-width:520px) { .ad-slot-bottom { display:none; } }
+  </style>
 </head>
 
 <body>
@@ -87,28 +93,6 @@
       if(consent === "accepted" || consent === "denied") document.getElementById("cookie-banner").style.display = "none";
     });
   </script>
-
-  <!-- Laterais: 120x600 à esquerda, 300x250 à direita -->
-  <aside class="ad-rail ad-rail-left" aria-label="Publicidade">
-    <span class="ad-label">PUBLICIDADE</span>
-    <div>
-      <script type="text/javascript">
-        aclib.runBanner({
-            zoneId: '12258998',
-        });
-      </script>
-    </div>
-  </aside>
-  <aside class="ad-rail ad-rail-right" aria-label="Publicidade">
-    <span class="ad-label">PUBLICIDADE</span>
-    <div>
-      <script type="text/javascript">
-        aclib.runBanner({
-            zoneId: '12259014',
-        });
-      </script>
-    </div>
-  </aside>
 
   <div class="site-shell">
     <header class="site-header">

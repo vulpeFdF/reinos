@@ -54,7 +54,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css" />
-  <link rel="stylesheet" href="/assets/ads.css" />
+  <style>
+    /* ===== Anúncios ===== */
+    :root { --content-w: 1230px; } /* largura do texto do artigo */
+    .ad-label { display:block; text-align:center; font:10px/1 "Cinzel",serif; letter-spacing:.2em; opacity:.35; margin-bottom:6px; }
+    /* Laterais 120x600: ficam no espaço vazio ao lado do texto */
+    .ad-rail { display:none; position:fixed; top:176px; width:120px; z-index:5; }
+    .ad-rail-left  { left:  calc(50% - var(--content-w) / 2 - 144px); }
+    .ad-rail-right { right: calc(50% - var(--content-w) / 2 - 144px); }
+    @media (min-width:1540px) and (min-height:800px) { .ad-rail { display:block; } }
+    /* Caixas 300x250 entre os parágrafos */
+    .ad-inline { display:flex; flex-direction:column; align-items:center; margin:40px auto; min-height:250px; }
+    /* Banner 468x60 antes do rodapé */
+    .ad-slot-bottom { display:flex; justify-content:center; margin:48px auto 32px; padding:0 16px; overflow:hidden; }
+    @media (max-width:520px) { .ad-slot-bottom { display:none; } }
+  </style>
 </head>
 <body>
   <div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:#fff;padding:20px;display:flex;justify-content:space-between;align-items:center;z-index:9999;font-family: serif;">
@@ -82,7 +96,7 @@
     });
   </script>
 
-  <!-- Laterais: 120x600 à esquerda, 300x250 à direita -->
+  <!-- Laterais: 120x600 nos dois lados do texto -->
   <aside class="ad-rail ad-rail-left" aria-label="Publicidade">
     <span class="ad-label">PUBLICIDADE</span>
     <div>
@@ -98,7 +112,7 @@
     <div>
       <script type="text/javascript">
         aclib.runBanner({
-            zoneId: '12259014',
+            zoneId: '12258998',
         });
       </script>
     </div>
@@ -210,5 +224,36 @@
   </div>
   <script src="/assets/app.js"></script>
   <script src="/assets/story.js"></script>
+  <script>
+    /* Insere caixas 300x250 entre os parágrafos do artigo, depois que ele é renderizado */
+    (function () {
+      var ZONE = '12259014', FIRST = 4, STEP = 6, MAX = 3, done = false;
+      function insertAds() {
+        var box = document.getElementById('content');
+        if (!box || done) return;
+        var paras = Array.prototype.filter.call(box.children, function (el) { return el.tagName === 'P'; });
+        if (paras.length < FIRST + 3) return;   // artigo ainda não renderizou (ou é curto demais)
+        done = true;
+        var placed = 0;
+        for (var i = FIRST - 1; i < paras.length - 2 && placed < MAX; i += STEP) {
+          var p = paras[i], next = p.nextElementSibling;
+          if (!next || next.tagName !== 'P') continue;   // nunca entre um título e seu parágrafo
+          var wrap = document.createElement('div');
+          wrap.className = 'ad-inline';
+          wrap.innerHTML = '<span class="ad-label">PUBLICIDADE</span>';
+          p.parentNode.insertBefore(wrap, next);
+          var s = document.createElement('script');
+          s.text = "aclib.runBanner({ zoneId: '" + ZONE + "' });";
+          wrap.appendChild(s);
+          placed++;
+        }
+      }
+      var target = document.getElementById('content');
+      if (!target) return;
+      new MutationObserver(function (m, obs) { insertAds(); if (done) obs.disconnect(); })
+        .observe(target, { childList: true, subtree: true });
+      insertAds();
+    })();
+  </script>
 </body>
 </html>
