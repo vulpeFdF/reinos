@@ -14,9 +14,13 @@
 .ad-rail-left  { left:  calc(50% - var(--content-w) / 2 - 120px - 24px); width: 120px; }
 .ad-rail-right { right: calc(50% - var(--content-w) / 2 - 300px - 24px); width: 300px; }
 
-/* precisa de (300px + 24px) de folga de cada lado do conteúdo */
+/* esquerda (120px): precisa de ~144px de folga ao lado do conteúdo */
+@media (min-width: 1400px) {
+  .ad-rail-left { display: block; }
+}
+/* direita (300px): precisa de ~324px de folga ao lado do conteúdo */
 @media (min-width: 1760px) {
-  .ad-rail { display: block; }
+  .ad-rail-right { display: block; }
 }
 
 /* Banner horizontal antes do rodapé */
