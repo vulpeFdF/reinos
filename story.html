@@ -56,13 +56,7 @@
   <link rel="stylesheet" href="/assets/style.css" />
   <style>
     /* ===== Anúncios ===== */
-    :root { --content-w: 1230px; } /* largura do texto do artigo */
     .ad-label { display:block; text-align:center; font:10px/1 "Cinzel",serif; letter-spacing:.2em; opacity:.35; margin-bottom:6px; }
-    /* Laterais 120x600: ficam no espaço vazio ao lado do texto */
-    .ad-rail { display:none; position:fixed; top:176px; width:120px; z-index:5; }
-    .ad-rail-left  { left:  calc(50% - var(--content-w) / 2 - 144px); }
-    .ad-rail-right { right: calc(50% - var(--content-w) / 2 - 144px); }
-    @media (min-width:1540px) and (min-height:800px) { .ad-rail { display:block; } }
     /* Caixas 300x250 entre os parágrafos */
     .ad-inline { display:flex; flex-direction:column; align-items:center; margin:40px auto; min-height:250px; }
     /* Banner 468x60 antes do rodapé */
@@ -95,28 +89,6 @@
       if(consent === "accepted" || consent === "denied") document.getElementById("cookie-banner").style.display = "none";
     });
   </script>
-
-  <!-- Laterais: 120x600 nos dois lados do texto -->
-  <aside class="ad-rail ad-rail-left" aria-label="Publicidade">
-    <span class="ad-label">PUBLICIDADE</span>
-    <div>
-      <script type="text/javascript">
-        aclib.runBanner({
-            zoneId: '12258998',
-        });
-      </script>
-    </div>
-  </aside>
-  <aside class="ad-rail ad-rail-right" aria-label="Publicidade">
-    <span class="ad-label">PUBLICIDADE</span>
-    <div>
-      <script type="text/javascript">
-        aclib.runBanner({
-            zoneId: '12258998',
-        });
-      </script>
-    </div>
-  </aside>
 
   <div class="site-shell">
     <header class="site-header">
