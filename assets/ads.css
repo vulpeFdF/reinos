@@ -1,0 +1,41 @@
+/* ===== Anúncios — Reinos das Sombras =====
+   Salve este arquivo como /assets/ads.css
+   --content-w: largura máxima do seu conteúdo (.container). Ajuste se o
+   seu site for mais largo/estreito, para as laterais nunca cobrirem o texto. */
+:root { --content-w: 1100px; }
+
+/* Laterais (só aparecem em telas largas) */
+.ad-rail {
+  display: none;
+  position: fixed;
+  top: 140px;               /* abaixo do cabeçalho */
+  z-index: 5;
+}
+.ad-rail-left  { left:  calc(50% - var(--content-w) / 2 - 120px - 24px); width: 120px; }
+.ad-rail-right { right: calc(50% - var(--content-w) / 2 - 300px - 24px); width: 300px; }
+
+/* precisa de (300px + 24px) de folga de cada lado do conteúdo */
+@media (min-width: 1760px) {
+  .ad-rail { display: block; }
+}
+
+/* Banner horizontal antes do rodapé */
+.ad-slot-bottom {
+  display: flex;
+  justify-content: center;
+  margin: 48px auto 32px;
+  padding: 0 16px;
+  overflow: hidden;
+}
+.ad-label {
+  display: block;
+  text-align: center;
+  font: 10px/1 "Cinzel", serif;
+  letter-spacing: .2em;
+  opacity: .35;
+  margin-bottom: 6px;
+}
+/* 468px não cabe em celular: esconde abaixo de 520px */
+@media (max-width: 520px) {
+  .ad-slot-bottom { display: none; }
+}

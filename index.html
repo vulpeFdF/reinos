@@ -34,12 +34,16 @@
     });
   </script>
 
-  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+
+<!-- Biblioteca de anúncios (necessária para aclib.runBanner funcionar) -->
+<script data-cfasync="false" src="//acscdn.com/script/aclib.js"></script>
+<!-- AutoTag desativado: é o que gera pop-ups/push. Para reativar, descomente:
 <script type="text/javascript">
     aclib.runAutoTag({
         zoneId: 'tnkoapvjxv',
     });
 </script>
+-->
 
 
   <!-- Google Analytics -->
@@ -55,6 +59,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="stylesheet" href="/assets/ads.css" />
 </head>
 
 <body>
@@ -82,6 +87,28 @@
       if(consent === "accepted" || consent === "denied") document.getElementById("cookie-banner").style.display = "none";
     });
   </script>
+
+  <!-- Laterais: 120x600 à esquerda, 300x250 à direita -->
+  <aside class="ad-rail ad-rail-left" aria-label="Publicidade">
+    <span class="ad-label">PUBLICIDADE</span>
+    <div>
+      <script type="text/javascript">
+        aclib.runBanner({
+            zoneId: '12258998',
+        });
+      </script>
+    </div>
+  </aside>
+  <aside class="ad-rail ad-rail-right" aria-label="Publicidade">
+    <span class="ad-label">PUBLICIDADE</span>
+    <div>
+      <script type="text/javascript">
+        aclib.runBanner({
+            zoneId: '12259014',
+        });
+      </script>
+    </div>
+  </aside>
 
   <div class="site-shell">
     <header class="site-header">
@@ -171,6 +198,18 @@
         <div class="container list" id="recentList"></div>
       </section>
     </main>
+
+    <!-- Banner 468x60 entre o conteúdo e o rodapé -->
+    <aside class="ad-slot-bottom" aria-label="Publicidade">
+      <div>
+        <span class="ad-label">PUBLICIDADE</span>
+        <script type="text/javascript">
+          aclib.runBanner({
+              zoneId: '12259006',
+          });
+        </script>
+      </div>
+    </aside>
 
     <footer class="site-footer">
       <div class="container footer-line"></div>
