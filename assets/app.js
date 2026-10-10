@@ -1,11 +1,11 @@
 async function loadPosts() {
-  const res = await fetch("data/posts.json", { cache: "no-store" });
+  const res = await fetch("/data/posts.json", { cache: "no-store" });
   return res.json();
 }
 
 function cardHTML(post) {
   return `
-    <a class="card" href="story.html?id=${encodeURIComponent(post.id)}">
+    <a class="card" href="/story?id=${encodeURIComponent(post.id)}">
       <div class="card-img" style="background-image:url('${post.cover_image || ""}')"></div>
       <div class="card-body">
         <div class="card-kicker">${post.category || ""}</div>
@@ -20,7 +20,7 @@ function cardHTML(post) {
 function rowHTML(post) {
   const cover = post.cover_image || "";
   return `
-    <a class="feed-row" href="story.html?id=${encodeURIComponent(post.id)}">
+    <a class="feed-row" href="/story?id=${encodeURIComponent(post.id)}">
       ${cover ? `<img class="feed-cover" src="${cover}" alt="${post.title || ""}">` : `<div></div>`}
       <div>
         <div class="feed-meta">${post.category || ""}</div>
@@ -75,7 +75,7 @@ function setupSearch(posts) {
 
     const filtered = posts.filter(p => (p.title || "").toLowerCase().includes(q));
     results.innerHTML = filtered.slice(0, 10).map(p => `
-      <a class="search-item" href="story.html?id=${encodeURIComponent(p.id)}">
+      <a class="search-item" href="/story?id=${encodeURIComponent(p.id)}">
         <div class="search-item-title">${p.title || ""}</div>
         <div class="search-item-sub">${p.subtitle || p.excerpt || ""}</div>
       </a>
@@ -163,15 +163,14 @@ async function goRandomPost() {
 
     if (!Array.isArray(posts) || posts.length === 0) return;
 
-    const keyOf = (p) => p.id ?? p.slug ?? null;
+    const keyOf = (p) => p.id ?? null;
 
     // Se só tem 1 post, vai nele mesmo
     if (posts.length === 1) {
       const only = posts[0];
       const k = keyOf(only);
       if (k) localStorage.setItem("last_random_post", String(k));
-      if (only.id) return (window.location.href = `story.html?id=${encodeURIComponent(only.id)}`);
-      if (only.slug) return (window.location.href = `story.html?slug=${encodeURIComponent(only.slug)}`);
+      if (only.id) window.location.href = `/story?id=${encodeURIComponent(only.id)}`;
       return;
     }
 
@@ -195,9 +194,7 @@ async function goRandomPost() {
     if (chosenKey) localStorage.setItem("last_random_post", String(chosenKey));
 
     if (chosen.id) {
-      window.location.href = `story.html?id=${encodeURIComponent(chosen.id)}`;
-    } else if (chosen.slug) {
-      window.location.href = `story.html?slug=${encodeURIComponent(chosen.slug)}`;
+      window.location.href = `/story?id=${encodeURIComponent(chosen.id)}`;
     }
   } catch (err) {
     console.error("Erro ao selecionar post aleatório:", err);

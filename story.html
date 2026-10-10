@@ -21,18 +21,6 @@
     });
   </script>
 
-
-<!-- Biblioteca de anúncios (necessária para aclib.runBanner funcionar) -->
-<script data-cfasync="false" src="//acscdn.com/script/aclib.js"></script>
-<!-- AutoTag desativado: é o que gera pop-ups/push. Para reativar, descomente:
-<script type="text/javascript">
-    aclib.runAutoTag({
-        zoneId: 'tnkoapvjxv',
-    });
-</script>
--->
-
-
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XC2ZVDQF6"></script>
   <script>
@@ -48,21 +36,12 @@
   <meta id="ogDesc" property="og:description" content="" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" id="canonicalTag" href="https://reinosdassombras.com.br/story.html" />
+  <!-- canonical: gerada por /assets/story.js a partir do id (/story?id=SLUG); não declarar estática aqui -->
   <title>Artigo • Reinos das Sombras</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css" />
-  <style>
-    /* ===== Anúncios ===== */
-    .ad-label { display:block; text-align:center; font:10px/1 "Cinzel",serif; letter-spacing:.2em; opacity:.35; margin-bottom:6px; }
-    /* Caixas 300x250 entre os parágrafos */
-    .ad-inline { display:flex; flex-direction:column; align-items:center; margin:40px auto; min-height:250px; }
-    /* Banner 468x60 antes do rodapé */
-    .ad-slot-bottom { display:flex; justify-content:center; margin:48px auto 32px; padding:0 16px; overflow:hidden; }
-    @media (max-width:520px) { .ad-slot-bottom { display:none; } }
-  </style>
 </head>
 <body>
   <div id="cookie-banner" style="position:fixed;bottom:0;left:0;width:100%;background:#111;color:#fff;padding:20px;display:flex;justify-content:space-between;align-items:center;z-index:9999;font-family: serif;">
@@ -169,18 +148,6 @@
       </div>
     </main>
 
-    <!-- Banner 468x60 entre o conteúdo e o rodapé -->
-    <aside class="ad-slot-bottom" aria-label="Publicidade">
-      <div>
-        <span class="ad-label">PUBLICIDADE</span>
-        <script type="text/javascript">
-          aclib.runBanner({
-              zoneId: '12259006',
-          });
-        </script>
-      </div>
-    </aside>
-
     <footer class="site-footer">
       <div class="container footer-line"></div>
       <div class="container footer-inner">
@@ -196,36 +163,5 @@
   </div>
   <script src="/assets/app.js"></script>
   <script src="/assets/story.js"></script>
-  <script>
-    /* Insere caixas 300x250 entre os parágrafos do artigo, depois que ele é renderizado */
-    (function () {
-      var ZONE = '12259014', FIRST = 4, STEP = 6, MAX = 3, done = false;
-      function insertAds() {
-        var box = document.getElementById('content');
-        if (!box || done) return;
-        var paras = Array.prototype.filter.call(box.children, function (el) { return el.tagName === 'P'; });
-        if (paras.length < FIRST + 3) return;   // artigo ainda não renderizou (ou é curto demais)
-        done = true;
-        var placed = 0;
-        for (var i = FIRST - 1; i < paras.length - 2 && placed < MAX; i += STEP) {
-          var p = paras[i], next = p.nextElementSibling;
-          if (!next || next.tagName !== 'P') continue;   // nunca entre um título e seu parágrafo
-          var wrap = document.createElement('div');
-          wrap.className = 'ad-inline';
-          wrap.innerHTML = '<span class="ad-label">PUBLICIDADE</span>';
-          p.parentNode.insertBefore(wrap, next);
-          var s = document.createElement('script');
-          s.text = "aclib.runBanner({ zoneId: '" + ZONE + "' });";
-          wrap.appendChild(s);
-          placed++;
-        }
-      }
-      var target = document.getElementById('content');
-      if (!target) return;
-      new MutationObserver(function (m, obs) { insertAds(); if (done) obs.disconnect(); })
-        .observe(target, { childList: true, subtree: true });
-      insertAds();
-    })();
-  </script>
 </body>
 </html>

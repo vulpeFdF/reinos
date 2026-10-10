@@ -1,0 +1,3 @@
+# Redirecionamento permanente (301) do formato antigo para o canônico.
+# /story.html?id=SLUG  ->  /story?id=SLUG   (a query string deve ser preservada; teste com curl após o deploy)
+/story.html  /story  301
